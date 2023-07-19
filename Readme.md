@@ -1,6 +1,6 @@
  # Proyecto CODERHOUSE
 
-***18/07/2023 - Primera-preentrega****
+***18/07/2023 - Primera-preentrega***
 
 ## Pasos para la instalación y la ejecución 
 
