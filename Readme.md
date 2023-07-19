@@ -1,10 +1,10 @@
  # Proyecto CODERHOUSE
 
-- 18/07/2023 - Primera-preentrega
+***18/07/2023 - Primera-preentrega****
 
 ## Pasos para la instalación y la ejecución 
 
-**Es importante tener instalado java 11 y Maven**
+**Es importante tener instalado NodeJs 18 > **
 
 - **clonar el repositorio en alguna ubicación de su máquina ej C:/example/app-tienda**
 - **abrir una consola CMD** 
