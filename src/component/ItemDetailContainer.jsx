@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
 import "../style/firstStyle.css";
-import ItemList from "./ItemList";
+import ItemDetail from "./ItemDetail";
 import { useParams } from "react-router-dom";
 
-const ItemListContainer = () => {
-  const {category} = useParams()
+const ItemDetailContainer = () => {
+  const {id} = useParams()
 
   const products = [
     
@@ -35,18 +34,17 @@ const ItemListContainer = () => {
   };
 
  
-  // getProducts.then((res)).catch((error)=>{console.log(error)});
 
-  const productFilter = products.filter(pro =>  pro.category === (category== "all"?pro.category:category ));
+  const productFilterById = products.find(pro =>  pro.id == id );
 
   return (
-    <div className="divContainerItems">
-        <ItemList
-        products = {productFilter}
+    <div className=" ">
+        <ItemDetail
+        product = {productFilterById}
         />
 
     </div>
   );
 };
 
-export default ItemListContainer;
+export default ItemDetailContainer;
