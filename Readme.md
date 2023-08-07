@@ -1,6 +1,9 @@
  # Proyecto CODERHOUSE
 
 ***18/07/2023 - Primera-preentrega***
+  
+
+
 
 ## Pasos para la instalación y la ejecución 
 
@@ -20,3 +23,11 @@
 ```shell
    $  mpm run dev
 ```
+
+
+
+***06/08/2023 - Segunda-preentrega vanegacion y routing***
+
+## Demo
+
+![](https://raw.githubusercontent.com/gabriel95-x/app-tienda/main/public/img/Tienda_Daya.gif)
