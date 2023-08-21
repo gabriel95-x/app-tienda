@@ -2,49 +2,43 @@ import { useEffect, useState } from "react";
 import "../style/firstStyle.css";
 import ItemList from "./ItemList";
 import { useParams } from "react-router-dom";
+import { collection, getDocs, getFirestore } from "firebase/firestore";
+import Loader from "./Loader";
 
 const ItemListContainer = () => {
-  const {category} = useParams()
+  const { category } = useParams();
 
-  const products = [
-    
-    {id:1, nombre:"Producto 1", descripcion:"esto es una descripcion del producto numero 1", stock:5 , category:"catA" ,precio:70.4, img:"https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg"}, 
-    {id:2, nombre:"Producto 2", descripcion:"esto es una descripcion del producto numero 1", stock:8 , category:"catC" ,precio:50.4, img:"https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg"}, 
-    {id:3, nombre:"Producto 3", descripcion:"esto es una descripcion del producto numero 1", stock:24 , category:"catC" ,precio:34.4, img:"https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg"}, 
-    {id:4, nombre:"Producto 4", descripcion:"esto es una descripcion del producto numero 1", stock:7, category:"catB" ,precio:72.4, img:"https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg"}, 
-    {id:5, nombre:"Producto 5", descripcion:"esto es una descripcion del producto numero 1", stock:2 , category:"catB" ,precio:500.4, img:"https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg"}, 
-    {id:6, nombre:"Producto 6", descripcion:"esto es una descripcion del producto numero 1", stock:8 , category:"catA" ,precio:45.4, img:"https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg"}, 
-    {id:7, nombre:"Producto 7", descripcion:"esto es una descripcion del producto numero 1", stock:9 , category:"catA" ,precio:75.4, img:"https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg"}, 
-    {id:8, nombre:"Producto 8", descripcion:"esto es una descripcion del producto numero 1", stock:4 , category:"catA" ,precio:575.4, img:"https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg"}, 
-    {id:9, nombre:"Producto 9", descripcion:"esto es una descripcion del producto numero 1", stock:7 , category:"catB" ,precio:754.4, img:"https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg"}, 
-    {id:10, nombre:"Producto 10", descripcion:"esto es una descripcion del producto numero 1", stock:9, category:"catA",precio:18.4, img:"https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg"}, 
-    {id:11, nombre:"Producto 11", descripcion:"esto es una descripcion del producto numero 1", stock:45, category:"catB",precio:500.4, img:"https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg"}, 
-    {id:12, nombre:"Producto 12", descripcion:"esto es una descripcion del producto numero 1", stock:23, category:"catC",precio:72.4, img:"https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg"}
-  ];
+  const [products, setProducts] = useState([]);
+  const [loader, setLoader] = useState(false);
 
+  useEffect(() => {
+    setLoader(false);
 
-  const getProducts = async () => {
-    if (products.length>0 ){
-      setTimeout(()=>{
-        resolveBaseUrl(products)
-      },3000);
-    }
-    else{
-      reject(new Error("no hay productos"));
-    }
-  };
+    const db = getFirestore();
+    const itemCollections = collection(db, "productos");
 
- 
-  // getProducts.then((res)).catch((error)=>{console.log(error)});
+    getDocs(itemCollections).then((snapshot) => {
+      const products = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id, }));
 
-  const productFilter = products.filter(pro =>  pro.category === (category== "all"?pro.category:category ));
+      setProducts(products);
+      setLoader(true);
+    });
+  }, []);
+
+  const productFilter = products.filter(
+    (pro) => pro.category === (category == "all" ? pro.category : category)
+  );
 
   return (
     <div className="divContainerItems">
-        <ItemList
-        products = {productFilter}
-        />
+      <>
+        {loader ?
 
+          <ItemList products={productFilter} />
+          :
+          <Loader />
+        }
+      </>
     </div>
   );
 };

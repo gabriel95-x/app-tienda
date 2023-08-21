@@ -3,8 +3,6 @@
 ***18/07/2023 - Primera-preentrega***
   
 
-
-
 ## Pasos para la instalación y la ejecución 
 
 **Es importante tener instalado NodeJs 18 > **
@@ -31,3 +29,9 @@
 ## Demo
 
 ![](https://raw.githubusercontent.com/gabriel95-x/app-tienda/main/public/img/Tienda_Daya.gif)
+
+
+
+***21/08/2023 - Entrega final del proyecto***
+
+En esta entrega se puede ver la mayoria de los conseptos aprendidos en el curso.
