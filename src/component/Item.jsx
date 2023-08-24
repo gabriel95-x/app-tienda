@@ -1,17 +1,31 @@
 import { Link } from "react-router-dom";
 
 const Item = ({ id, nombre, descripcion, precio, category, stock, img }) => {
-  return (
-    <div key={id} className="cardCustom">
-      <img className="card-img-top" src={img} alt="Card image cap" width="100" height="100"></img>
-      <div className="card-body">
-        <h5 className="card-title"><b>{nombre}</b></h5>
-        <p className="card-text">{descripcion}...</p>
-        <div className="price">$ {precio}</div>
-        <Link to={`/item/${id}`}>
-          <button className="btn  btn-primary btn-block">Ver Detalle</button>
-        </Link>
 
+  const formPhoto = {
+    backgroundImage: "url("+img+") ",
+    backgroundPosition: "center",
+    backgroundSize: "contain", 
+    backgroundRepeat:"no-repeat"
+
+   }
+
+  return (
+    <div key={id} className="   col-3 m-2  border border-danger p-2 rounded" style={{   height:"500px"}}>
+
+      <div style={formPhoto} className="card-img-top w-100 h-50"  alt="Card image cap" ></div>
+
+      <div className="card-body w-100 h-30" >
+
+        <div className="card-title   text-uppercase  fw-bold " > {nombre}</div>
+        <p  style={{lineHeight: "5rem"}} className="card-text  text-start ">{descripcion}</p>
+        <div className="price fw-bold">$ {precio}</div>
+
+      </div>
+
+      <div className="card-footer mt-2 h-10"> <Link to={`/item/${id}`}>
+        <button className="btn  btn-success btn-block">Ver Detalle</button>
+      </Link>
       </div>
     </div>
   );

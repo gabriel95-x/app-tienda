@@ -20,10 +20,10 @@ const OrderForm = ({ total, onConfirm }) => {
                 <form
                     className="row g-3 needs-validation"
                     onSubmit={handleSubmit}
-                    novalidate
+                    
                 >
                     <div className="col-md-4">
-                        <label className="form-label">Nomberes</label>
+                        <label className="form-label">Nombre</label>
                         <input
                             type="text"
                             className="form-control"
@@ -33,7 +33,7 @@ const OrderForm = ({ total, onConfirm }) => {
                         <div className="valid-feedback">Looks good!</div>
                     </div>
                     <div className="col-md-4">
-                        <label className="form-label">Apellidos</label>
+                        <label className="form-label">Apellido</label>
                         <input
                             type="text"
                             className="form-control"

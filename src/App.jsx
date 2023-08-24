@@ -9,7 +9,7 @@ import ItemDetailContainer from "./component/ItemDetailContainer";
 
 import ShoppingCartContext from "./context/ShoppingCartContext"
 import Cart from "./component/Cart";
-import { SendOrder } from "./component/SendOrder";
+import Checkout from "./component/Checkout";
 
 function App() {
   return (
@@ -23,7 +23,7 @@ function App() {
           <Route exact path="/products/:category" element={<ItemListContainer />} />
           <Route exact path="/item/:id" element={<ItemDetailContainer />} />
           <Route exact path="/mycart/" element={<Cart />} />
-          <Route exact path="/sendorder/" element={<SendOrder />} />
+          <Route exact path="/sendorder/" element={<Checkout />} />
 
 
         </Routes>

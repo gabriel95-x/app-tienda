@@ -4,9 +4,25 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import CartWidget from './CartWidget';
 import { Link } from 'react-router-dom';
+import { collection, getDocs, getFirestore } from 'firebase/firestore';
+import { useEffect, useState } from 'react';
 
 function NavBarr() {
 
+  const [categorias, setCategorias] = useState([]);
+
+  useEffect(() => {
+
+    const db = getFirestore();
+    const itemCollections = collection(db, "categorias");
+
+    getDocs(itemCollections).then((snapshot) => {
+      console.log(snapshot.docs);
+      const docs = snapshot.docs.map((doc) => ({ ...doc.data() }));
+
+      setCategorias(docs);
+    });
+  }, []);
 
 
   return (
@@ -21,14 +37,14 @@ function NavBarr() {
             height="30"
             className="d-inline-block align-top"
           />{' '}
-          Tienda Daya</Navbar.Brand>
+          Tienda Diana</Navbar.Brand>
         <Nav>
           <Nav.Link as={Link} to="/">Home</Nav.Link>
           <Nav.Link as={Link} to="/products/all">Products</Nav.Link>
           <NavDropdown title="Categoria" id="basic-nav-dropdown">
-            <NavDropdown.Item as={Link} to="/products/catA" >Categoria A</NavDropdown.Item>
-            <NavDropdown.Item as={Link} to="/products/catB" >Categoria B</NavDropdown.Item>
-            <NavDropdown.Item as={Link} to="/products/catC" >Categoria C</NavDropdown.Item>
+            {categorias.map((item) =>
+              (<NavDropdown.Item key={item.nombre} as={Link} to={`/products/${item.nombre}`} >{item.nombre}</NavDropdown.Item>))
+            }
           </NavDropdown>
         </Nav>
 

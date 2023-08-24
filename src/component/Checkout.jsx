@@ -5,7 +5,7 @@ import OrderForm from "./OrderForm";
 import { Link } from "react-router-dom";
 import Loader from "./Loader";
 
-export const SendOrder = () => {
+const Checkout = () => {
     const { cart, resetCart } = useContext(CartContext);
 
     const [loading, setLoading] = useState(false);
@@ -87,3 +87,5 @@ export const SendOrder = () => {
         </>
     );
 };
+
+export default Checkout;

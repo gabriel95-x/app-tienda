@@ -20,9 +20,11 @@ const Contador = ({ id, nombre, precio, stock, img }) => {
 
   const { cart, addToCar } = useContext(CartContext);
 
-
-
-
+ 
+const add = ( ) => {
+  addToCar(id, nombre, precio, img, cantidad);
+  setCantidad(0);
+};
 
 
   return (
@@ -35,7 +37,7 @@ const Contador = ({ id, nombre, precio, stock, img }) => {
 
       </div>
       <div className="mt-2">
-        <button type="button" onClick={() => addToCar(id, nombre, precio, img, cantidad)} className="btn btn-secondary btn-lg btn-block">Add to car</button>
+        <button type="button" onClick={add} className="btn btn-success btn-lg btn-block">Add to car</button>
       </div>
     </div>
   );

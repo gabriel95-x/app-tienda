@@ -9,7 +9,7 @@ const ItemListContainer = () => {
   const { category } = useParams();
 
   const [products, setProducts] = useState([]);
-  const [loader, setLoader] = useState(false);
+  const [loader, setLoader] = useState(true);
 
   useEffect(() => {
     setLoader(false);
@@ -28,9 +28,9 @@ const ItemListContainer = () => {
   const productFilter = products.filter(
     (pro) => pro.category === (category == "all" ? pro.category : category)
   );
-
+ 
   return (
-    <div className="divContainerItems">
+    <div className=" container  mt-3">
       <>
         {loader ?
 

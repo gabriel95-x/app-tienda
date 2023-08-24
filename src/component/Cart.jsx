@@ -110,7 +110,7 @@ const Cart = () => {
           <div className="card-footer bg-transparent border-secondary text-end">
             <Link to="/sendorder">
               <button className="btn  m-3 btn-primary btn-block">
-                Realizar Comprar
+                Realizar Compra
               </button>
             </Link>
             Total a Pagar: ${total}
