@@ -24,9 +24,11 @@ const ItemListContainer = () => {
       setLoader(true);
     });
   }, []);
-
+  console.log(category);
   const productFilter = products.filter(
-    (pro) => pro.category === (category == "all" ? pro.category : category)
+   
+
+    (pro) => pro.category === (category? category :pro.category )
   );
  
   return (

@@ -62,7 +62,7 @@ const Checkout = () => {
     if (orderId) {
         return (
             <div className="mt-3">
-                <h1>Su orden es: {orderId}</h1>;
+                <h1>Su orden es: {orderId}</h1>
 
                 <Link to="/products/all">
                     {" "}

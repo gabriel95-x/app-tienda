@@ -21,6 +21,7 @@ function App() {
 
           <Route exact path="/" element={<Welcome texto="Bienvenidos a la tienda" />} />
           <Route exact path="/products/:category" element={<ItemListContainer />} />
+          <Route exact path="/products/" element={<ItemListContainer />} />
           <Route exact path="/item/:id" element={<ItemDetailContainer />} />
           <Route exact path="/mycart/" element={<Cart />} />
           <Route exact path="/sendorder/" element={<Checkout />} />

@@ -17,7 +17,7 @@ function NavBarr() {
     const itemCollections = collection(db, "categorias");
 
     getDocs(itemCollections).then((snapshot) => {
-      console.log(snapshot.docs);
+      
       const docs = snapshot.docs.map((doc) => ({ ...doc.data() }));
 
       setCategorias(docs);
@@ -40,7 +40,7 @@ function NavBarr() {
           Tienda Diana</Navbar.Brand>
         <Nav>
           <Nav.Link as={Link} to="/">Home</Nav.Link>
-          <Nav.Link as={Link} to="/products/all">Products</Nav.Link>
+          <Nav.Link as={Link} to="/products">Products</Nav.Link>
           <NavDropdown title="Categoria" id="basic-nav-dropdown">
             {categorias.map((item) =>
               (<NavDropdown.Item key={item.nombre} as={Link} to={`/products/${item.nombre}`} >{item.nombre}</NavDropdown.Item>))
